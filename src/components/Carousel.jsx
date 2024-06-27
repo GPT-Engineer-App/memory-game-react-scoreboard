@@ -1,33 +1,11 @@
 import React from "react";
-import { EmblaCarouselReact } from "embla-carousel-react";
+import useEmblaCarousel from "embla-carousel-react";
 
 const Carousel = () => {
-  const [emblaRef] = EmblaCarouselReact({ loop: true });
+  const [emblaRef] = useEmblaCarousel({ loop: true });
 
   return (
-    <>
-      <style jsx>{`
-        .embla {
-          overflow: hidden;
-        }
-
-        .embla__container {
-          display: flex;
-        }
-
-        .embla__slide {
-          position: relative;
-          min-width: 100%;
-          padding: 0 10px;
-        }
-
-        .embla__slide img {
-          display: block;
-          width: 100%;
-          height: auto;
-          aspect-ratio: 16 / 9;
-        }
-      `}</style>
+    
       <div className="embla" ref={emblaRef}>
         <div className="embla__container">
           <div className="embla__slide">
@@ -41,7 +19,7 @@ const Carousel = () => {
           </div>
         </div>
       </div>
-    </>
+    
   );
 };
 
