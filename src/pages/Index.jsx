@@ -2,6 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
+const cardStyles = {
+  container: "perspective-1000",
+  card: "relative w-full h-full transform-style-preserve-3d transition-transform duration-500",
+  flipped: "rotate-y-180",
+  front: "absolute w-full h-full backface-hidden bg-gray-300 flex items-center justify-center text-2xl",
+  back: "absolute w-full h-full backface-hidden bg-white transform rotate-y-180 flex items-center justify-center text-2xl",
+};
+
 const generateCards = () => {
   const icons = [
     "🍎", "🍌", "🍇", "🍉", "🍓", "🍒", "🍍", "🥝",
@@ -51,12 +59,13 @@ const Index = () => {
             {cards.map((icon, index) => (
               <div
                 key={index}
-                className={`p-4 border rounded-lg text-2xl flex items-center justify-center cursor-pointer ${
-                  flipped.includes(index) || matched.includes(index) ? "bg-white" : "bg-gray-300"
-                }`}
+                className={`${cardStyles.container} ${flipped.includes(index) || matched.includes(index) ? cardStyles.flipped : ""}`}
                 onClick={() => handleCardClick(index)}
               >
-                {(flipped.includes(index) || matched.includes(index)) && icon}
+                <div className={cardStyles.card}>
+                  <div className={cardStyles.front}></div>
+                  <div className={cardStyles.back}>{icon}</div>
+                </div>
               </div>
             ))}
           </div>
