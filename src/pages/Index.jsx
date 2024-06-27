@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import "./Index.css"; // Import the CSS file for flipping effect
 
 const generateCards = () => {
   const icons = [
@@ -51,12 +52,13 @@ const Index = () => {
             {cards.map((icon, index) => (
               <div
                 key={index}
-                className={`p-4 border rounded-lg text-2xl flex items-center justify-center cursor-pointer ${
-                  flipped.includes(index) || matched.includes(index) ? "bg-white" : "bg-gray-300"
-                }`}
+                className={`card ${flipped.includes(index) || matched.includes(index) ? "flipped" : ""}`}
                 onClick={() => handleCardClick(index)}
               >
-                {(flipped.includes(index) || matched.includes(index)) && icon}
+                <div className="card-inner">
+                  <div className="card-front"></div>
+                  <div className="card-back">{icon}</div>
+                </div>
               </div>
             ))}
           </div>
