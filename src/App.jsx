@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Index from "./pages/Index.jsx";
-import Slider from "./components/Slider";
+import Carousel from "./components/Carousel";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        <Slider />
+        <Carousel />
         <Nav />
         <main className="flex-grow">
           <Routes>
